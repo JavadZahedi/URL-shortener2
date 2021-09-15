@@ -1,5 +1,6 @@
 from django.http import request
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import RedirectView
 from rest_framework.views import APIView
 from rest_framework import generics
 
@@ -19,6 +20,15 @@ class URLView(generics.ListCreateAPIView):
         for key in sort_keys:
             queryset = queryset.order_by(key)
         return queryset
-
+    
     def perform_create(self, serializer):
         serializer.save(slug=generate_slug())
+
+
+class URLRedirectView(RedirectView):
+    permanant = True
+    
+    def get_redirect_url(self, slug):
+        url = get_object_or_404(URL, slug=slug)
+        url.increase_visits()
+        return url.address

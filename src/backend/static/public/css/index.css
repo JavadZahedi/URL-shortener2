@@ -1,0 +1,61 @@
+body {
+    direction: rtl;
+    min-height: 100vh;
+    font-family: Sahel;
+    background-image: url('../images/header_bg.png');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+header {
+    font-family: Lalezar;
+    font-size: 40px;
+}
+
+@media only screen and (max-width: 662px) {
+    header {
+        font-size: 25px;
+    }
+}
+
+.search-btn {
+    font-size: 14px;
+}
+
+.url-input label {
+    height: 35px;
+    line-height: 35px;
+}
+
+.url-input input {
+    width: 95%;
+}
+
+.url-number {
+    font-family: Lalezar;
+}
+
+.icon {
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    background-size: 100% 100%;
+}
+
+.telegram {
+    background-image: url('../images/telegram.png');
+}
+
+.bale {
+    background-image: url('../images/bale.png');
+}
+
+.twitter {
+    background-image: url('../images/twitter.png');
+}
+
+.instagram {
+    background-image: url('../images/instagram.png');
+}

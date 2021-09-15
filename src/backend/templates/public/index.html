@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL shortener</title>
+
+    <!-- Import bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+
+    <!-- Import axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+
+    <link rel='stylesheet' href='{% static "public/css/fonts.css" %}'>
+    <link rel='stylesheet' href='{% static "public/css/index.css" %}'>
+    
+</head>
+<body>
+    <div id='app' class='container-fluid m-0 p-0'>
+        <header class='text-center p-3'>
+            <span> کوتاه نشانی اینترنتی گستر ایران زمین </span>
+            <span> (شعبه۲) </span>
+        </header>
+        <hr class='mt-1 mb-0'>
+        <main>
+            <url-input :host='host'></url-input>
+            <urls-table :host='host'></urls-table>
+        </main>
+        <page-footer :telegram-address='contactUs.telegramAddress'
+                     :bale-address='contactUs.baleAddress'
+                     :twitter-address='contactUs.twitterAddress'
+                     :instagram-address='contactUs.instagramAddress'
+                     :phone-number='contactUs.phoneNumber'>
+        </page-footer>
+    </div>
+
+    <!-- Import the app -->
+    <script src='{% static "public/js/index.js" %}'></script>
+    
+    <!-- Import components -->
+    <script src='{% static "public/js/components/urlInput.js" %}'></script>
+    <script src='{% static "public/js/components/urlsTable.js" %}'></script>
+    <script src='{% static "public/js/components/pageFooter.js" %}'></script>
+
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+</body>
+</html>
