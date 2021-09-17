@@ -3,8 +3,9 @@ app.component('urls-table', {
         return {
             urls: [],
             currentPage: 1,
-            urlsInPage: null,
-            totalPages: null
+            pageSize: null,
+            totalPages: null,
+            loading: true
         }
     },
     props: ['host'],
@@ -14,6 +15,11 @@ app.component('urls-table', {
         },
         hasNext() {
             return this.currentPage < this.totalPages;
+        }
+    },
+    watch: {
+        currentPage(page) {
+            this.updateURLs();
         }
     },
     methods: {
@@ -34,27 +40,29 @@ app.component('urls-table', {
                 .then(response => {
                     this.urls = response.data.results;
                     this.totalPages = response.data.total_pages;
-                    this.urlsInPage = Math.ceil(response.data.count/this.totalPages);
+                    this.pageSize = response.data.page_size;
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
         updateCurrentPage(page) {
-            if (this.currentPage != page) {
-                this.currentPage = page;
-                this.updateURLs();
-            }
+            this.currentPage = page;
         }
     },
-    created() {
-        this.updateURLs();  
+    mounted() {
+        this.updateURLs();
     },
     template:
     /*html*/
     `
     <div class='container text-center'>
-        <table class='table table-bordered table-responsive-sm 
+        <button v-if='!urls.length' class="btn btn-primary m-3">
+            در حال بارگذاری...
+            <span class="spinner-border spinner-border-sm"></span>
+        </button>
+
+        <table v-else class='table table-bordered table-responsive-sm 
             table-sm table-light table-striped text-center shadow'>
             <thead class='thead-dark'>
                 <tr>
@@ -66,7 +74,7 @@ app.component('urls-table', {
             </thead>
             <tbody>
                 <tr v-for='(url, index) in urls'>
-                    <td>{{ toPersian(urlsInPage*(currentPage-1) + index + 1) }}</td>
+                    <td>{{ toPersian(pageSize*(currentPage-1) + index + 1) }}</td>
                     <td>{{ url.label }}</td>
                     <td><a :href='shortenedAddress(url.slug)'>{{ shortenedAddress(url.slug) }}</a></td>
                     <td>{{ toPersian(url.visits) }}</td>
