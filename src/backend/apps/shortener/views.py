@@ -26,7 +26,7 @@ class URLView(generics.ListCreateAPIView):
 
 
 class URLRedirectView(RedirectView):
-    permanant = True
+    permanent = True
     
     def get_redirect_url(self, slug):
         url = get_object_or_404(URL, slug=slug)
