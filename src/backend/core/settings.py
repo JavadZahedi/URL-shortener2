@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'apps.shortener',
-    'apps.utils',
     'apps.public',
 ]
 
@@ -139,5 +138,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'apps.shortener.paginations.CustomPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 5
 }
