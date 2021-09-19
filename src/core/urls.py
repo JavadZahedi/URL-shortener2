@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('shortener/', include('apps.shortener.urls')),
     path('public/', include('apps.public.urls')),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path('accounts/', include('apps.accounts.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -19,12 +19,17 @@
     <!-- Import axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 
+    <!-- Import Font Awesome 5 -->
+    <script src="https://kit.fontawesome.com/03873ee428.js" crossorigin="anonymous"></script>
+
+    <!-- custom css-->
     <link rel='stylesheet' href='{% static "public/css/fonts.css" %}'>
     <link rel='stylesheet' href='{% static "public/css/index.css" %}'>
     
 </head>
 <body>
     <div id='app' class='container-fluid m-0 p-0'>
+        <authentication :host='host' :auth-token='authToken'></authentication>
         <header class='text-center p-3'>
             <span> کوتاه نشانی اینترنتی گستر ایران زمین </span>
             <span> (شعبه۲) </span>
@@ -46,6 +51,7 @@
     <script src='{% static "public/js/index.js" %}'></script>
     
     <!-- Import components -->
+    <script src='{% static "public/js/components/authentication.js" %}'></script>
     <script src='{% static "public/js/components/urlInput.js" %}'></script>
     <script src='{% static "public/js/components/urlsTable.js" %}'></script>
     <script src='{% static "public/js/components/pageFooter.js" %}'></script>

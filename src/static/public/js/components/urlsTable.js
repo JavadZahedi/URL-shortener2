@@ -82,7 +82,7 @@ app.component('urls-table', {
             </tbody>
         </table>
 
-        <ul v-if='totalPages > 0' class="pagination justify-content-center flex-row-reverse flex-wrap p-0">
+        <ul v-if='totalPages > 1' class="pagination justify-content-center flex-row-reverse flex-wrap p-0">
             <li :class="{'page-item':true, 'disabled':!hasPrevious}">
                 <a class="page-link" @click='updateCurrentPage(currentPage-1)'>قبلی &#187;</a>
             </li>

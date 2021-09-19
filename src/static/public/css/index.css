@@ -59,3 +59,20 @@ header {
 .instagram {
     background-image: url('../images/instagram.png');
 }
+
+.page-item {
+    cursor: pointer;
+}
+
+.auth-nav {
+    background-color: #ffd00023;
+}
+
+.auth-nav a {
+    color: white;
+}
+
+.auth-nav a:hover {
+    background-color: #ffd0005e;
+    color: white;
+}
