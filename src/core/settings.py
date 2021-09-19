@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.shortener',
     'apps.public',
     'apps.accounts',
+    'core.customs'
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'core.customs.CustomPagination',
+    'DEFAULT_PAGINATION_CLASS': 'core.customs.pagination.CustomPagination',
     'PAGE_SIZE': 5
 }
