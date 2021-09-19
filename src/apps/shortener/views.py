@@ -1,24 +1,26 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import RedirectView
 
-from rest_framework.views import APIView
+
 from rest_framework.permissions import AllowAny
-from rest_framework import generics
 
 from .serializers import URLSerializer
 from .models import URL
+from core.customs.viewsets import CustomModelViewSet
 
 # Create your views here.
 
-class URLViewSet(generics.ListCreateAPIView):
-    serializer_class = URLSerializer
+class URLViewSet(CustomModelViewSet):
+    queryset = URL.objects.all()
+    serializer_classes = {
+        'default': URLSerializer
+    }
 
-    def get_queryset(self):
-        queryset = URL.objects.all()
-        sort_keys = self.request.data.get('sort', [])
-        for key in sort_keys:
-            queryset = queryset.order_by(key)
-        return queryset
+    # def get_queryset(self):
+    #     queryset = self.queryset
+    #     sort_key = self.request.query_params.get('sort')
+    #     print(sort_key)
+    #     return queryset.order_by(sort_key)
 
 
 class URLRedirectView(RedirectView):
