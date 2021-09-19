@@ -7,6 +7,6 @@ router.register(r'users', views.UserViewSet)
 
 app_name = 'accounts'
 urlpatterns = [
-    # All methods
+    # GET, POST, PUT, PATCH, DELETE
     path('', include(router.urls)),
 ]
