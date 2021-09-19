@@ -8,15 +8,16 @@ from rest_framework.permissions import (
 
 from .serializers import UserListSerializer, UserDetailSerializer
 from .permissions import IsOwner
+from core.customs import CustomModelViewSet
 
 # Create your views here.
 # django.contrib.auth.models
 
 UserModel = get_user_model()
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.CustomModelViewSet):
     queryset = UserModel.objects.all()
-    serializers = {
+    serializer_classes = {
         'list': UserListSerializer,
         'default': UserDetailSerializer
     }
@@ -25,12 +26,3 @@ class UserViewSet(viewsets.ModelViewSet):
         'list': (IsAdminUser,),
         'default': (IsAdminUser|IsOwner)
     }
-
-    def get_permissions(self):
-        default_classes = self.permission_classes['default']
-        classes = self.permission_classes.get(self.action, default_classes)
-        return [permission() for permission in classes]
-
-    def get_serializer_class(self):
-        default_serializer = self.serializers['default']
-        return self.serializers.get(self.action, default_serializer)

@@ -138,6 +138,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'apps.shortener.paginations.CustomPagination',
+    'DEFAULT_PAGINATION_CLASS': 'core.customs.CustomPagination',
     'PAGE_SIZE': 5
 }
