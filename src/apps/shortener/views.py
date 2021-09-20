@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import RedirectView
 
-
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 
 from .serializers import URLSerializer
 from .models import URL
@@ -15,12 +14,9 @@ class URLViewSet(CustomModelViewSet):
     serializer_classes = {
         'default': URLSerializer
     }
-
-    # def get_queryset(self):
-    #     queryset = self.queryset
-    #     sort_key = self.request.query_params.get('sort')
-    #     print(sort_key)
-    #     return queryset.order_by(sort_key)
+    permission_classes = {
+        'default': (IsAuthenticatedOrReadOnly,)
+    }
 
 
 class URLRedirectView(RedirectView):

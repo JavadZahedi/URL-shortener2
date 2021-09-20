@@ -6,6 +6,14 @@ class CustomModelViewSet(viewsets.ModelViewSet):
         'default': (AllowAny,)
     }
 
+    def get_queryset(self):
+        queryset = self.queryset
+        sort_keys = self.request.query_params.getlist('sort', '')
+        try:
+            return queryset.order_by(*sort_keys)
+        except:
+            return queryset
+
     def get_permissions(self):
         default_classes = self.permission_classes['default']
         classes = self.permission_classes.get(self.action, default_classes)

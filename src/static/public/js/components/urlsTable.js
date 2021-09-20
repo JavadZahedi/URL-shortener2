@@ -36,7 +36,7 @@ app.component('urls-table', {
         },
         updateURLs() {
             axios
-                .get('/shortener/urls?page='+ this.currentPage + '&sort=+visits')
+                .get('/shortener/urls?page='+ this.currentPage + '&sort=-visits')
                 .then(response => {
                     this.urls = response.data.results;
                     this.totalPages = response.data.total_pages;
