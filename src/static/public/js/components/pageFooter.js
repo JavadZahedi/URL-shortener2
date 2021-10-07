@@ -17,9 +17,8 @@ app.component('page-footer', {
     `
     <footer class='p-2 text-center'>
         <hr class='mt-1 mb-0'>
-        <p class='p-3'>
-            {{ description }}
-            <br><br>
+        <p class='p-2'>
+            <p class='p-3 text-justify mx-auto'>{{ description }}</p>
             شماره تماس: {{ phoneNumber }}
             <br><br>
             ما را در فضای مجازی نیز دنبال کنید

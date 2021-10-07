@@ -16,6 +16,7 @@ class URLViewSet(CustomModelViewSet):
     }
     permission_classes = {
         'default': (IsAuthenticatedOrReadOnly,)
+        # 'default': (AllowAny,)
     }
 
 
