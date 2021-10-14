@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'apps.shortener',
     'apps.public',
     'apps.accounts',
@@ -136,10 +136,6 @@ STATICFILES_DIRS = [STATIC_DIR,]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ],
     'DEFAULT_PAGINATION_CLASS': 'core.customs.pagination.CustomPagination',
     'PAGE_SIZE': 5
 }
